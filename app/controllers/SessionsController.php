@@ -4,9 +4,20 @@ class SessionsController extends \BaseController {
 
 
 
+	public function index()
+	{
+		
+		
+		  return Redirect::route('home');
+			
+	}
+
 	public function create()
 	{
-		return View::make('sessions.create'); 
+		
+		 return View::make('sessions.create'); 
+		
+			
 	}
 
 
@@ -21,8 +32,8 @@ class SessionsController extends \BaseController {
 			'password' => $input['Password'],
 			]);
 
-		if($attempt) return  Auth::user()->email;// Redirect::intended('/');
-		else return "faild";
+		if($attempt) return Redirect::intended('/')->with('flash_msg','Your have been logged in');
+		else return View::make('login')->with('flash_msg','your user name or password are wrong, Please Try Again');
 		// if (Auth::attempt(Input::only('UserName','password')))
 		// {
 
@@ -38,7 +49,7 @@ class SessionsController extends \BaseController {
 	{
 		//
 		Auth::logout();
-		return 'logedOut';
+		 return Redirect::Route('sessions.index')->with('flash_msg','Your have been logged Out');
 	}
 
 

@@ -3,6 +3,9 @@
 	<title>login</title>
 </head>
 <body>
+	@if (Auth::check())
+	welcome 
+	@endif
 	{{ Form::open(['route' =>'sessions.store'])}}
 		<div>
 			{{ Form::label('UserName','User Name:') }}
@@ -14,7 +17,7 @@
 		</div>
 		<div>
 			{{ Form::submit('login')}}
-			</div>
+		</div>
 	{{ Form::close() }}
 </body>
 </html>

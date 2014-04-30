@@ -56,6 +56,11 @@ Do the following if you're using your customized build of modernizr (http://www.
         <div class="clear"></div>
   </div></nav>
 </header>
+@if(Session::get('flash_msg'))
+  <div class="flash">
+      {{ Session::get('flash_msg')}}
+    </div>
+@endif
 
 <!--  END header  -->
 
